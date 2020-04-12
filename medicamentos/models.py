@@ -19,8 +19,7 @@ class Medicamento(models.Model):
     descripcion = models.CharField(max_length=200)
     indicaciones = models.CharField(max_length=250)
     precio = models.FloatField()
-    #Relaciones
-    ordenesMedicas = models.ManyToManyField('eps.OrdenMedica')
+    
     #Métodos
     def __str__(self):
         return '{}'.format(self.referencia)
