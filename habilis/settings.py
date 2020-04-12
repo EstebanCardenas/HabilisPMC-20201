@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'habilis.wsgi.application'
 DATABASES = {
          'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'habilisDB',
+        'NAME': 'habilisdb',
         'USER': 'habilis',
         'PASSWORD': 'agil',
         'HOST': '172.24.42.128',
