@@ -28,8 +28,9 @@ class Cita(models.Model):
 # Clase OrdenMedica
 class OrdenMedica(models.Model):
     #Atributos
-    emision = models.DateTimeField()
-    caducidad = models.DateTimeField()
+    numRegistro = models.BigIntegerField()
+    emision = models.DateTimeField(auto_now_add=False)
+    caducidad = models.DateTimeField(auto_now_add=False)
 
     #Relaciones
     cita = models.ForeignKey(Cita, on_delete=models.CASCADE , null = False , default=None)
