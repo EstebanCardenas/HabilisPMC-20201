@@ -18,5 +18,5 @@ from django.urls import path
 from .views import *
 
 urlpatterns = [
-    path('pedidos/crear/', PedidoCreateView.as_view(), name='pedido_create')
+    path('pedidos/crear/', PedidoCreateView.as_view())
 ]

@@ -8,6 +8,10 @@ from medicamentos.forms import PedidoForm
 
 class PedidoCreateView(View):
     template_name = 'pedidos/create.html'
+    def get(self, request, *args, **kwargs):
+        form = PedidoForm()
+        context = {'form':form}
+        return render(request, self.template_name, context)
     def post(self, request, *args, **kwargs):
         form = PedidoForm(request.POST)
         if form.is_valid():
