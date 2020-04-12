@@ -36,4 +36,4 @@ class OrdenMedica(models.Model):
     
     #Métodos
     def __str__(self):
-        return '{}'.format(self.cita + "("+self.emision+ + "-" + self.caducidad+")")
+        return '{}'.format(self.cita + "("+self.emision + "-" + self.caducidad+")")

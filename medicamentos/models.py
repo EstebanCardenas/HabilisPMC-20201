@@ -1,4 +1,5 @@
 from django.db import models
+from eps.models import OrdenMedica
 
 # Create your models here.
 
@@ -20,9 +21,19 @@ class Medicamento(models.Model):
     indicaciones = models.CharField(max_length=250)
     precio = models.FloatField()
     #Relaciones
+    ordenesMedicas = models.ManyToManyField(OrdenMedica)
+    #Métodos
+    def __str__(self):
+        return '{}'.format(self.referencia)
 
 class MedicamentoPedido(models.Model):
     #Atributos
-    cantidad = models.SmallIntegerField()
-    precioTotal = models.FloatField()
+    cantidad= models.SmallIntegerField()
+    precioTotal= models.FloatField()
     #Relaciones
+    medicamento = models.OneToOneField(Medicamento, on_delete = models.CASCADE, primary_key = True)
+    pedido = models.ForeignKey(Pedido, on_delete=models.CASCADE , null = False , default=None)
+    #Métodos
+    def __str__(self):
+        return '{}'.format(self.medicamento + " Cantidad: " + self.cantidad)
+
