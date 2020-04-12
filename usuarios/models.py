@@ -9,17 +9,20 @@ class Usuario(models.Model):
     nombre = models.CharField(max_length=50)
     celular = models.CharField(max_length=50)
     correo = models.CharField(max_length=50)
-    #Relaciones
 
 class Paciente(Usuario):
     #Atributos
     edad = models.IntegerField()
     #Relaciones
+    eps = models.ForeignKey('eps.Eps', on_delete=models.CASCADE)
+    #Funciones
+    def __str__(self):
+        '%s, %s' % (self.nombre, self.cedula.__str__())
 
 class Medico(Usuario):
     #Atributos 
-    regMedico: models.CharField(max_length=100)
-    edad: models.SmallIntegerField()
+    regMedico= models.CharField(max_length=100)
+    edad= models.SmallIntegerField()
     especialidad: models.CharField(max_length=120)
     #Relaciones:
     eps = models.ManyToManyField(Eps)
