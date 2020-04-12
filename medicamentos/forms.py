@@ -7,6 +7,7 @@ class PedidoForm(forms.ModelForm):
             "placeholder":"Introduzca su dirección"
         }
     ))
+
     class Meta:
         model = Pedido
         fields = [
