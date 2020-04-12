@@ -1,4 +1,5 @@
 from django.db import models
+from eps.models import Eps, Cita
 
 # Create your models here.
 
@@ -21,3 +22,7 @@ class Medico(Usuario):
     edad: models.SmallIntegerField()
     especialidad: models.CharField(max_length=120)
     #Relaciones:
+    eps = models.ManyToManyField(Eps)
+    #Métodos
+    def __str__(self):
+        return '{}'.format(self.regMedico + "("+self.especialidad+")")
