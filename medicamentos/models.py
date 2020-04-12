@@ -1,5 +1,4 @@
 from django.db import models
-from eps.models import OrdenMedica
 
 # Create your models here.
 
@@ -21,7 +20,7 @@ class Medicamento(models.Model):
     indicaciones = models.CharField(max_length=250)
     precio = models.FloatField()
     #Relaciones
-    ordenesMedicas = models.ManyToManyField(OrdenMedica)
+    ordenesMedicas = models.ManyToManyField('eps.OrdenMedica')
     #Métodos
     def __str__(self):
         return '{}'.format(self.referencia)

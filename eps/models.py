@@ -1,6 +1,4 @@
 from django.db import models
-from usuarios.models import Medico
-from usuarios.models import Paciente
 
 # Clase EPS
 class Eps(models.Model):
@@ -18,8 +16,8 @@ class Cita(models.Model):
     fecha = models.DateTimeField()
 
     #Relaciones
-    medico = models.ForeignKey(Medico, on_delete=models.CASCADE , null = False , default=None)
-    paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE , null = False , default=None)
+    medico = models.ForeignKey('usuarios.Medico', on_delete=models.CASCADE , null = False , default=None)
+    paciente = models.ForeignKey('usuarios.Paciente', on_delete=models.CASCADE , null = False , default=None)
     
     #Métodos
     def __str__(self):
