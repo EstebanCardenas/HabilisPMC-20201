@@ -23,7 +23,7 @@ class Medico(Usuario):
     #Atributos 
     regMedico= models.CharField(max_length=100)
     edad= models.SmallIntegerField()
-    especialidad: models.CharField(max_length=120)
+    especialidad= models.CharField(max_length=120)
     #Relaciones:
     eps = models.ManyToManyField(Eps)
     #Métodos
