@@ -14,3 +14,10 @@ class Paciente(Usuario):
     #Atributos
     edad = models.IntegerField()
     #Relaciones
+
+class Medico(Usuario):
+    #Atributos 
+    regMedico: models.CharField(max_length=100)
+    edad: models.SmallIntegerField()
+    especialidad: models.CharField(max_length=120)
+    #Relaciones:
