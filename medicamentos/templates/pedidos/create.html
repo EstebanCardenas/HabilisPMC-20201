@@ -2,4 +2,9 @@
 
 {% block content %}
 
+    <form method="POST"> {% csrf_token %}
+        {{ form.as_p }}
+        <input type="Siguiente" value="Save"/>
+    </form>
+
 {% endblock %}

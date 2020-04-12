@@ -15,7 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from .views import *
 
 urlpatterns = [
-
+    path('pedidos/crear/', PedidoCreateView.as_view(), name='pedido_create')
 ]

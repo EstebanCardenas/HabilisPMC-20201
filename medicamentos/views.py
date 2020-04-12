@@ -1,3 +1,17 @@
 from django.shortcuts import render
 
 # Create your views here.
+from django.views import View
+
+from medicamentos.forms import PedidoForm
+
+
+class PedidoCreateView(View):
+    template_name = 'pedidos/create.html'
+    def post(self, request, *args, **kwargs):
+        form = PedidoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            form = PedidoForm()
+        context = {"form":form}
+        return render(request, self.template_name, context)
