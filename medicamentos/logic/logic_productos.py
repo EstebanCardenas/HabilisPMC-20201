@@ -5,7 +5,7 @@ def get_all_products():
     productos = Medicamento.objects.all()
     return productos
 
-def get_Product(producto):
+def get_product(producto):
     try:
         Medicamento.objects.get(referencia=producto)
     except ObjectDoesNotExist:
@@ -14,5 +14,4 @@ def get_Product(producto):
     return Medicamento.objects.get(referencia=producto)
 
 def get_precio_medicamento(nombre):
-    producto = Medicamento.objects.filter(referencia = nombre).precio
-    return producto
+    return Medicamento.objects.get(referencia=nombre).precio

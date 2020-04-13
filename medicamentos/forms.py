@@ -1,6 +1,6 @@
 from django import forms
 from .models import *
-from .logic.logic_productos import get_all_products,get_precio_medicamento
+from .logic.logic_productos import *
 
 class PedidoForm(forms.ModelForm):
     direccion = forms.CharField(label="Dirección", widget=forms.TextInput(
@@ -8,7 +8,6 @@ class PedidoForm(forms.ModelForm):
             "placeholder":"Introduzca su dirección"
         }
     ))
-    obj = Medicamento.objects.get(1).precio
     class Meta:
         model = Pedido
         fields = [
@@ -18,8 +17,7 @@ class PedidoForm(forms.ModelForm):
 
 class MedicamentoPedidoForm(forms.ModelForm):
     cantidad = forms.IntegerField(label="Cantidad")
-    medicamento = forms.ModelChoiceField(label="Medicamento",queryset=get_all_products())
-    precioTotal= cantidad * get_precio_medicamento(medicamento)
+    medicamento = forms.ModelChoiceField(label="Medicamento", queryset=get_all_products())
     class Meta:
         model = MedicamentoPedido
         fields = [
