@@ -1,5 +1,8 @@
-from ..models import Medicamento,MedicamentoPedido
+from ..models import *
 from django.core.exceptions import ObjectDoesNotExist
+
+def get_pedidos():
+    return Pedido.objects.all()
 
 def get_all_products():
     productos = Medicamento.objects.all()

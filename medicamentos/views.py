@@ -18,7 +18,7 @@ class PedidoCreateView(View):
         context = {"form":form}
         return render(request, self.template_name, context)
 
-class CreateMedicamentoProducto(View):
+class CreateMedicamentoProductoView(View):
     template_name = 'productos/slectProducto.html'
     def get(self, request, *args, **kwargs):
         form = MedicamentoPedidoForm()

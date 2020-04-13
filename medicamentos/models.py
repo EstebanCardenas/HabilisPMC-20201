@@ -11,7 +11,7 @@ class Pedido(models.Model):
     paciente = models.ForeignKey('usuarios.Paciente', on_delete=models.CASCADE, null=True, blank=True)
     #Funciones
     def __str__(self):
-        '%s, %s, %s, $s' % (self.fecha.__str__(), self.direccion, self.precioTotal.__str__(), self.paciente.nombre)
+        return '%s' % (self.direccion)
 
 class Medicamento(models.Model):
     #Atributos
@@ -28,11 +28,11 @@ class MedicamentoPedido(models.Model):
     #Atributos
     cantidad= models.SmallIntegerField(null=True, blank=True)
     #Relaciones
-    medicamento = models.OneToOneField(Medicamento, on_delete = models.CASCADE, primary_key = True,null=False, blank=True)
+    medicamento = models.OneToOneField(Medicamento, on_delete = models.CASCADE, primary_key = True, null=False, blank=True)
     pedido = models.ForeignKey(Pedido, on_delete=models.CASCADE , null = False , default=None, blank=True)
     #Métodos
     def __str__(self):
-        return '{}'.format(self.medicamento + " Cantidad: " + self.cantidad)
+        return '%s Cantidad: %s' % (self.medicamento.__str__(), self.cantidad)
 
     def precio_total(self):
         return self.cantidad*self.medicamento.precio

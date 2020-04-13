@@ -18,9 +18,11 @@ class PedidoForm(forms.ModelForm):
 class MedicamentoPedidoForm(forms.ModelForm):
     cantidad = forms.IntegerField(label="Cantidad")
     medicamento = forms.ModelChoiceField(label="Medicamento", queryset=get_all_products())
+    pedido = forms.ModelChoiceField(label="Pedido", queryset=get_pedidos())
     class Meta:
         model = MedicamentoPedido
         fields = [
             'medicamento',
             'cantidad',
+            'pedido',
         ]
