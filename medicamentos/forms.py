@@ -7,7 +7,7 @@ class PedidoForm(forms.ModelForm):
             "placeholder":"Introduzca su dirección"
         }
     ))
-
+    obj = Medicamento.objects.get(1).precio
     class Meta:
         model = Pedido
         fields = [
