@@ -21,7 +21,7 @@ class Cita(models.Model):
     
     #Métodos
     def __str__(self):
-        return '{}'.format(self.tipo + "("+self.fecha+")")
+        return '{}'.format(self.tipo + "("+self.fecha.__str__()+")")
 
 # Clase OrdenMedica
 class OrdenMedica(models.Model):
@@ -36,4 +36,4 @@ class OrdenMedica(models.Model):
     
     #Métodos
     def __str__(self):
-        return '{}'.format(self.cita + "("+self.emision + "-" + self.caducidad+")")
+        return '{}'.format(self.numRegistro.__str__() + "("+self.emision.__str__() + "-" + self.caducidad.__str__()+")")

@@ -16,7 +16,7 @@ class Paciente(Usuario):
     eps = models.ForeignKey('eps.Eps', on_delete=models.CASCADE, null=True, blank=True)
     #Funciones
     def __str__(self):
-        '%s, %s' % (self.nombre, self.cedula.__str__())
+        return '{}'.format(self.nombre + "("+self.cedula.__str__()+")")
 
 class Medico(Usuario):
     #Atributos 
