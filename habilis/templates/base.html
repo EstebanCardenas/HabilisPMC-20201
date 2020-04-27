@@ -2,6 +2,8 @@
 <html>
     <head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
         <title>Habilis</title>
 
         <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #21D0C3;">
@@ -16,8 +18,16 @@
                 </li>
               </ul>
               <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                {% if user.is_authenticated %}
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a style="font-size:120%" class="nav-link">{{ user.username }}</a></li>
+                    <li><a style="font-size:120%; padding-right:20px" class="nav-link" href="/logout">Log out</a></li>
+                </ul>
+                {% else %}
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a style="font-size:120%; padding-right:20px" class="navbar-link" href="/login/auth0">Login</a></li>
+                </ul>
+                {% endif %}
               </form>
             </div>
           </nav>
@@ -27,7 +37,37 @@
         {% endblock %}
 
     </head>
+
+    <style media="screen">
+      .carousel-cell {
+        width: 66%;
+        }
+    
+        /* cell number */
+        .carousel-cell:before {
+          display: block;
+        }
+      </style>
+
+
     <body>
+
+   <h2 class="w3-center">Para la salud, no existen las demoras</h2>
+    <div class="carousel" data-flickity='{ "wrapAround": true, "autoPlay": true }'>
+      <div class="carousel-cell">
+        <img class="w3-image" src="https://previews.123rf.com/images/nexusplexus/nexusplexus1608/nexusplexus160806086/61811482-las-tecnolog%C3%ADas-innovadoras-como-el-concepto-de-la-ciencia-y-la-medicina.jpg">
+      </div>
+      <div class="carousel-cell">
+        <img class="w3-image" src="https://clinic-cloud.com/wp-content/uploads/2017/07/avances-tecnologicos-en-la-medicina-actual.jpg">
+      </div>
+      <div class="carousel-cell">
+        <img class="w3-image" src="https://tienda.maudestudio.com/wp-content/uploads/2018/11/prl_sanitario_electromedicina.jpg">
+      </div>
+    </div>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 
         <div class="d-flex align-items-center vh-100">
             <div class="container text-center">

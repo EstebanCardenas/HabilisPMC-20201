@@ -39,8 +39,27 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'eps',
     'medicamentos',
-    'usuarios',
+    'usuarios', 
+    'social_django'
 ]
+
+LOGIN_URL = "/login/auth0"
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "https://habilis.auth0.com/v2/logout?returnTo=http%3A%2F%2F127.0.0.1:8000"
+
+SOCIAL_AUTH_TRAILING_SLASH = False # Remove end slash from routes
+SOCIAL_AUTH_AUTH0_DOMAIN = 'habilis.auth0.com'
+SOCIAL_AUTH_AUTH0_KEY = 'bFL8uqW4042uBXG32bSC0azyaYCDn2ir'
+SOCIAL_AUTH_AUTH0_SECRET = 'kNLiDRigwdRNlZ_Xu2hRsXJj9UzMDytO0x71NNiCG1Zek5Mk0iAOMOdNptozYW7-'
+
+SOCIAL_AUTH_AUTH0_SCOPE = [
+   'openid', 'profile'
+]
+
+AUTHENTICATION_BACKENDS = {
+   'habilis.auth0backend.Auth0',
+   'django.contrib.auth.backends.ModelBackend',
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
