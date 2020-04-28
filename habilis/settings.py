@@ -37,10 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'social_django',
     'eps',
     'medicamentos',
-    'usuarios', 
-    'social_django'
+    'usuarios',
+
 ]
 
 LOGIN_URL = "/login/auth0"

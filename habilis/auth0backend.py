@@ -1,5 +1,7 @@
 import requests
 from social_core.backends.oauth import BaseOAuth2
+from django.shortcuts import render
+
 
 class Auth0(BaseOAuth2):
     """Auth0 OAuth authentication backend"""
@@ -43,3 +45,4 @@ def getRole(request):
     userinfo = resp.json()
     role = userinfo['https://habilis:auth0:com/role']
     return (role)
+    
