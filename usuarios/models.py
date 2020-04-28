@@ -20,11 +20,30 @@ class Paciente(Usuario):
 
 class Medico(Usuario):
     #Atributos 
+    user_id = models.CharField(max_length=50, null=True, blank=True)
+    nombreMedico = models.CharField(max_length=50, null=True, blank=True)
+    apellidoMedico = models.CharField(max_length=50, null=True, blank=True)
     regMedico= models.CharField(max_length=100, null=True, blank=True)
     edad= models.SmallIntegerField(null=True, blank=True)
     especialidad= models.CharField(max_length=120, null=True, blank=True)
     #Relaciones:
     eps = models.ManyToManyField('eps.Eps', blank=True)
+    #Métodos
+    def __str__(self):
+        return '{}'.format(self.regMedico + "("+self.especialidad+")")
+
+
+class OrdenMedicaMedico(Usuario):
+    #Atributos 
+    fecha= models.DateField(auto_now_add=True, null=True, blank=True)
+    uso= models.CharField(max_length=120, null=True, blank=True)
+    indicaciones = models.CharField(max_length=120, null=True, blank=True)
+    cantidad = models.SmallIntegerField(null=True, blank=True)
+    duracion = models.CharField(max_length=120, null=True, blank=True)
+    #Relaciones:
+    medicoAsociaco = models.ForeignKey(Medico, on_delete=models.CASCADE, null=True, blank=True)
+    pacienteAsociado = models.ForeignKey(Paciente, on_delete=models.CASCADE, null=True, blank=True)
+    medicamentoAsociado = models.ForeignKey('medicamentos.Medicamento', on_delete=models.CASCADE, null=True, blank=True)
     #Métodos
     def __str__(self):
         return '{}'.format(self.regMedico + "("+self.especialidad+")")
