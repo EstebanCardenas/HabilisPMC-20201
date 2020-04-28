@@ -52,6 +52,16 @@
 
     <body>
 
+      {% if user.is_authenticated %}
+      <div class="d-flex align-items-center vh-100">
+        <div class="container text-center">
+            {% block content %}
+  
+            {% endblock %}  
+        </div>
+      </div> 
+
+      {% else %}
    <h2 class="w3-center">Para la salud, no existen las demoras</h2>
     <div class="carousel" data-flickity='{ "wrapAround": true, "autoPlay": true }'>
       <div class="carousel-cell">
@@ -68,14 +78,7 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
-
-        <div class="d-flex align-items-center vh-100">
-            <div class="container text-center">
-                {% block content %}
-
-                {% endblock %}  
-            </div>
-          </div>
+  {% endif %}
           
     </body>
 
