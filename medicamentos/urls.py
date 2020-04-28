@@ -19,5 +19,6 @@ from .views import *
 
 urlpatterns = [
     path('pedidos/crear/', PedidoCreateView.as_view()),
-    path('pedirMedicamento/',CreateMedicamentoProductoView.as_view()),
+    path('pedirMedicamento/', CreateMedicamentoProductoView.as_view()),
+    path('ordenMedica/validar', ValidarOrdenMedicaView.as_view()),
 ]
