@@ -20,6 +20,7 @@ class Paciente(Usuario):
 
 class Medico(Usuario):
     #Atributos 
+    user_id = models.CharField(max_length=50, null=True, blank=True)
     nombreMedico = models.CharField(max_length=50, null=True, blank=True)
     apellidoMedico = models.CharField(max_length=50, null=True, blank=True)
     regMedico= models.CharField(max_length=100, null=True, blank=True)
