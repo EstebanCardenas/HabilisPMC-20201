@@ -1,4 +1,2 @@
 from ..models import *
-
-def getMedico():
-    return Medico.objects.get(regMedico="321")
+from django.core.exceptions import ObjectDoesNotExist

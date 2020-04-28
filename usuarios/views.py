@@ -1,6 +1,8 @@
 from django.shortcuts import render,redirect
 from django.views import View
 from usuarios.formsMedico import FormularioOrdenMedica
+from habilis.auth0backend import getRole, getUserId
+from django.contrib.auth.decorators import login_required
 
 class FormularioOrdenView(View):
     template_name = 'medico2.html'

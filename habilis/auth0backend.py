@@ -45,4 +45,15 @@ def getRole(request):
     userinfo = resp.json()
     role = userinfo['https://habilis:auth0:com/role']
     return (role)
+
+def getUserId(request):
+    user = request.user
+    auth0user = user.social_auth.get(provider="auth0")
+    accessToken = auth0user.extra_data['access_token']
+    url = "https://habilis.auth0.com/userinfo"
+    headers = {'authorization': 'Bearer ' + accessToken}
+    resp = requests.get(url, headers=headers)
+    userinfo = resp.json()
+    role = userinfo['sub']
+    return (role)
     
