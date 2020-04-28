@@ -53,6 +53,7 @@
     <body>
 
       {% if user.is_authenticated %}
+
       <div class="d-flex align-items-center vh-100">
         <div class="container text-center">
             {% block content %}
@@ -62,7 +63,6 @@
       </div>
 
       {% else %}
-   <h2 class="w3-center">Para la salud, no existen las demoras</h2>
     <div class="carousel" data-flickity='{ "wrapAround": true, "autoPlay": true }'>
       <div class="carousel-cell">
         <img class="w3-image" src="https://previews.123rf.com/images/nexusplexus/nexusplexus1608/nexusplexus160806086/61811482-las-tecnolog%C3%ADas-innovadoras-como-el-concepto-de-la-ciencia-y-la-medicina.jpg">
@@ -74,7 +74,8 @@
         <img class="w3-image" src="https://tienda.maudestudio.com/wp-content/uploads/2018/11/prl_sanitario_electromedicina.jpg">
       </div>
     </div>
-
+    <br>
+    <h2 class="w3-center">Para la salud, no existen las demoras</h2>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
