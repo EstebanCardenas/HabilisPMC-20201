@@ -54,13 +54,12 @@
 
       {% if user.is_authenticated %}
 
-      <div class="d-flex align-items-center vh-100">
         <div class="container text-center">
             {% block content %}
 
             {% endblock %}
         </div>
-      </div>
+
 
       {% else %}
     <div class="carousel" data-flickity='{ "wrapAround": true, "autoPlay": true }'>

@@ -41,8 +41,11 @@ INSTALLED_APPS = [
     'eps',
     'medicamentos',
     'usuarios',
+    'crispy_forms',
 
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_URL = "/login/auth0"
 LOGIN_REDIRECT_URL = "/"
