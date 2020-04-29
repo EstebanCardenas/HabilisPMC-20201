@@ -32,7 +32,7 @@ class OrdenMedica(models.Model):
 
     #Relaciones
     cita = models.ForeignKey(Cita, on_delete=models.CASCADE , null = True, blank=True, default=None)
-    medicamentos = models.ManyToManyField('medicamentos.Medicamento')
+    medicamentos = models.ManyToManyField('medicamentos.Medicamento', blank=True)
     
     #Métodos
     def __str__(self):

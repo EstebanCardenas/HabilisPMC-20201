@@ -1,6 +1,7 @@
 from django import forms
 from .logic.logicMedico import *
 from .models import *
+from eps.models import OrdenMedica
 from django.http import HttpRequest
 from habilis.views import getPutoId
 from .logic.logicMedico import *
@@ -10,42 +11,33 @@ import datetime
 
 
 
-class FormularioOrdenMedica(forms.Form):
+
+class FormularioOrdenMedica(forms.ModelForm):
 
     userIdMedico = getPutoId
     try: 
         Medico.objects.get(user_id=userIdMedico)
     except ObjectDoesNotExist:
         userIdMedico = "auth0|5ea761721cc1ac0c146c32e2"
-    m = Medico.objects.get(user_id=userIdMedico)
+    medicoAsociaco = Medico.objects.get(user_id=userIdMedico)
     
 
-    nombreMedico = forms.CharField(label="Nombre Médico", initial=m.nombre, disabled = True)
-    especialidad = forms.CharField(label="Especialidad", initial=m.especialidad, disabled = True)
-    edad = forms.CharField(label="Edad", initial=m.edad, disabled = True)
-    registroMedico = forms.CharField(label="Número de registro médico", initial=m.regMedico, disabled = True)
-    fecha = forms.DateField(initial=datetime.date.today, disabled = True)
-    nombrePaciente = forms.ModelChoiceField(label="Nombre paciente", queryset=getPacientes())
-    cedulaPaciente = forms.CharField(label="Cédula del paciente")
-    uso = forms.CharField(label="Uso")
-    indicaciones = forms.CharField(label="Indicaciones")
-    cantidad = forms.IntegerField(label="Cantidad", initial=1)
-    duracion = forms.CharField(label="Duración")
-    
-
+    nombreMedico = forms.CharField(label="Nombre Médico", initial=medicoAsociaco.nombre, disabled = True)
+    especialidad = forms.CharField(label="Especialidad", initial=medicoAsociaco.especialidad, disabled = True)
+    edad = forms.CharField(label="Edad", initial=medicoAsociaco.edad, disabled = True)
+    registroMedico = forms.CharField(label="Número de registro médico", initial=medicoAsociaco.regMedico, disabled = True)
+    numRegistro = forms.IntegerField(label="Número de registro de orden")
+    emision = forms.DateField(label="Fecha de emision")
+    caducidad = forms.DateField(label="Fecha de caducidad")
+    cita = forms.ModelChoiceField(label="Cita", queryset=getCitas())
+    medicamentos = forms.ModelMultipleChoiceField(label="Medicamento", queryset=getMedicamentos())
 
     class Meta:
-        model = OrdenMedicaMedico
+        model = OrdenMedica
         fields = [
-            'nombreMedico',
-            'especialidad',
-            'edad',
-            'registroMedico',
-            'fecha',
-            'nombrePaciente',
-            'cedulaPaciente',
-            'uso',
-            'indicaciones',
-            'cantidad',
-            'duracion',
+            'numRegistro',
+            'emision',
+            'caducidad',
+            'cita',
+            'medicamentos'
         ]
