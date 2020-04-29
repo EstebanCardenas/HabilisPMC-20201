@@ -1,7 +1,8 @@
-{% extends base.html %}
+{% extends 'base.html' %}
 
 {% block content %}
-    <form method='GET'>
-        {{ form.as_p }}
+    <form method='GET' action="{% url 'orden_encontrada' %}"> {% csrf_token %}
+        <label for="numReg">Número de Solicitud: </label>
+        <input name="q" type="number" placeholder="Ingrese número de solicitud" id="numReg" required>
     </form>
 {% endblock %}

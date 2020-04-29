@@ -18,7 +18,8 @@ from django.urls import path
 from .views import *
 
 urlpatterns = [
-    path('pedidos/crear/', PedidoCreateView.as_view()),
-    path('pedirMedicamento/', CreateMedicamentoProductoView.as_view()),
-    path('ordenMedica/validar', ValidarOrdenMedicaView.as_view()),
+    path('pedidos/crear/', PedidoCreateView.as_view(), name='crear_pedido'),
+    path('pedirMedicamento/', CreateMedicamentoProductoView.as_view(), name='pedir_medicamento'),
+    path('ordenMedica/validar/', ValidarOrdenMedicaView.as_view(), name='validar'),
+    path('ordenMedica/', VerOrdenMedicaView.as_view(), name='orden_encontrada'),
 ]

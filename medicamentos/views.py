@@ -1,7 +1,9 @@
 from django.shortcuts import render,redirect
+from django.db.models import Q # new
 #From Logic
 # Create your views here.
 from django.views import View
+from django.views.generic import ListView
 
 from eps.models import OrdenMedica
 from medicamentos.forms import *
@@ -42,9 +44,20 @@ class ValidarOrdenMedicaView(View):
             'form':form
         }
         return render(request, self.template_name, context)
-    def get_queryset(self, request):
-        numReg = request.GET.get('q')
-        orden = OrdenMedica.objects.filter(numRegistro=numReg)
-        context = {'orden':orden}
+
+class VerOrdenMedicaView(View):
+    template_name = 'orden_medica/orden_encontrada.html'
+    def get(self, request):
+        numReg = int(request.GET['q'])
+        try:
+            orden = OrdenMedica.objects.get(numRegistro=numReg)
+        except:
+            orden = None
+        medicamentos = None
         if orden != None:
-            return render(request, 'orden_medica/orden_encontrada.html', context)
+            medicamentos = orden.medicamentos.all()
+        context = {
+            'orden':orden,
+            'meds':medicamentos,
+        }
+        return render(request, self.template_name, context)
