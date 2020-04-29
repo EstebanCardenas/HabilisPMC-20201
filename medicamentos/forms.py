@@ -1,6 +1,7 @@
 from django import forms
 from .models import *
 from .logic.logic_productos import *
+from usuarios.models import Paciente
 
 class PedidoForm(forms.ModelForm):
     direccion = forms.CharField(label="Dirección", widget=forms.TextInput(
@@ -8,12 +9,14 @@ class PedidoForm(forms.ModelForm):
             "placeholder":"Introduzca su dirección"
         }
     ))
+    paciente = None
     class Meta:
         model = Pedido
         fields = [
             'direccion'
         ]
-
+    def set_paciente(self, pc:Paciente):
+        self.paciente = pc
 
 class MedicamentoPedidoForm(forms.ModelForm):
     cantidad = forms.IntegerField(label="Cantidad")
@@ -27,7 +30,7 @@ class MedicamentoPedidoForm(forms.ModelForm):
             'pedido',
         ]
 
-class OrdenMedicaForm(forms.ModelForm):
+class OrdenMedicaForm(forms.Form):
     numRegistro = forms.IntegerField(label='Número de Solicitud', widget=forms.NumberInput(
         attrs={
             'placeholder':'Introduzca su número de solicitud'

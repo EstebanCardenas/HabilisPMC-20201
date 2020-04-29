@@ -2,12 +2,10 @@
 
 {% block content %}
 
-    <form method="POST"> {% csrf_token %}
+    <form method="POST" action="{% url 'crear_pedido' %}"> {% csrf_token %}
         <h3>Registrar Pedido</h3>
-        {{ form.as_p }}
-        <input type="submit" value="Enviar"/>
-        <br>
-        <a href="http://172.24.42.154:8000/medicamentos/pedirMedicamento/"> Solicitar Medicamentos </a>
+            {{ form.as_p }}
+        <a href="{% url 'pedir_medicamento' %}" class="button" style="color: lightskyblue">Siguiente</a>
     </form>
 
 {% endblock %}

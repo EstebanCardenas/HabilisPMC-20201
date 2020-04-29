@@ -100,6 +100,21 @@ WSGI_APPLICATION = 'habilis.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
+<<<<<<< HEAD
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'habilisdb',
+        'USER': 'habilis',
+        'PASSWORD': 'agil',
+        'HOST': '172.24.42.128',
+        'PORT': '5432',
+    }
+
+    # 'default': {
+    #    'ENGINE': 'django.db.backends.sqlite3',
+    #    'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    # }
+=======
      'default': {
          'ENGINE': 'django.db.backends.postgresql_psycopg2',
          'NAME': 'habilisdb',
@@ -113,6 +128,7 @@ DATABASES = {
    #    'ENGINE': 'django.db.backends.sqlite3',
    #    'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
    # }
+>>>>>>> 8f83ac05f0be60e7fa0ae9c33851756e5c07876d
 }
 
 
