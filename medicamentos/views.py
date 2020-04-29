@@ -2,7 +2,9 @@ from django.shortcuts import render,redirect
 #From Logic
 # Create your views here.
 from django.views import View
-from medicamentos.forms import PedidoForm,MedicamentoPedidoForm
+
+from eps.models import OrdenMedica
+from medicamentos.forms import *
 
 class PedidoCreateView(View):
     template_name = 'pedidos/create.html'
@@ -31,3 +33,18 @@ class CreateMedicamentoProductoView(View):
             form = MedicamentoPedidoForm()
         context = {"form":form}
         return render(request, self.template_name, context)
+
+class ValidarOrdenMedicaView(View):
+    template_name = 'orden_medica/validar_orden.html'
+    def get(self, request, *args, **kwargs):
+        form = OrdenMedicaForm()
+        context = {
+            'form':form
+        }
+        return render(request, self.template_name, context)
+    def get_queryset(self, request):
+        numReg = request.GET.get('q')
+        orden = OrdenMedica.objects.filter(numRegistro=numReg)
+        context = {'orden':orden}
+        if orden != None:
+            return render(request, 'orden_medica/orden_encontrada.html', context)

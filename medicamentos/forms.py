@@ -26,3 +26,10 @@ class MedicamentoPedidoForm(forms.ModelForm):
             'cantidad',
             'pedido',
         ]
+
+class OrdenMedicaForm(forms.ModelForm):
+    numRegistro = forms.IntegerField(label='Número de Solicitud', widget=forms.NumberInput(
+        attrs={
+            'placeholder':'Introduzca su número de solicitud'
+        }
+    ))
