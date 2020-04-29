@@ -20,11 +20,18 @@ class FormularioOrdenMedica(forms.Form):
     m = Medico.objects.get(user_id=userIdMedico)
     
 
-    nombreMedico = forms.CharField(label="Nombre Médico", initial=m.nombre )
-    especialidad = forms.CharField(label="Especialidad", initial=m.especialidad)
-    edad = forms.CharField(label="Edad", initial=m.edad)
-    registroMedico = forms.CharField(label="Número de registro médico", initial=m.regMedico)
-    fecha = forms.DateField(initial=datetime.date.today)
+    nombreMedico = forms.CharField(label="Nombre Médico", initial=m.nombre, disabled = True)
+    especialidad = forms.CharField(label="Especialidad", initial=m.especialidad, disabled = True)
+    edad = forms.CharField(label="Edad", initial=m.edad, disabled = True)
+    registroMedico = forms.CharField(label="Número de registro médico", initial=m.regMedico, disabled = True)
+    fecha = forms.DateField(initial=datetime.date.today, disabled = True)
+    nombrePaciente = forms.ModelChoiceField(label="Nombre paciente", queryset=getPacientes())
+    cedulaPaciente = forms.CharField(label="Cédula del paciente")
+    uso = forms.CharField(label="Uso")
+    indicaciones = forms.CharField(label="Indicaciones")
+    cantidad = forms.IntegerField(label="Cantidad", initial=1)
+    duracion = forms.CharField(label="Duración")
+    
 
 
     class Meta:
@@ -34,5 +41,11 @@ class FormularioOrdenMedica(forms.Form):
             'especialidad',
             'edad',
             'registroMedico',
-            'fecha'
+            'fecha',
+            'nombrePaciente',
+            'cedulaPaciente',
+            'uso',
+            'indicaciones',
+            'cantidad',
+            'duracion',
         ]
