@@ -3,6 +3,8 @@ from django.views import View
 from usuarios.formsMedico import FormularioOrdenMedica
 from habilis.auth0backend import getRole, getUserId
 from django.contrib.auth.decorators import login_required
+from usuarios.logic.logicMedico import getCitas
+from usuarios.logic.logicMedico import getOrdenes
 
 class FormularioOrdenView(View):
     template_name = 'medico2.html'
@@ -16,6 +18,31 @@ class FormularioOrdenView(View):
             form.save()
             form = FormularioOrdenMedica()
         context = {"form":form}
+        return render(request, self.template_name, context)
+
+class VisualizacionCitas(View):
+    template_name = 'medicoCitas.html'
+    def get(self, request):
+        citas = getCitas()
+        data = citas.values('id', 'tipo', 'fecha', 'medico', 'medico__nombre', 'paciente', 'paciente__nombre')
+        context = {
+            'tags': [
+                {'citas': data}
+            ]
+        }
+        return render(request, self.template_name, context)
+
+class VisualizacionOrdenes(View):
+    template_name = 'medicoOrdenes.html'
+    def get(self, request):
+        data = getOrdenes()
+        #data = ordenes.values('id', 'numRegistro', 'emision', 'caducidad', 'cita', 'cita__id', 'cita__paciente__nombre','medicamentos')
+        #data = ordenes.values()
+        context = {
+            'tags': [
+                {'ordenes': data}
+            ]
+        }
         return render(request, self.template_name, context)
 
 class UIPaciente(View):
