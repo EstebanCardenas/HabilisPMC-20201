@@ -3,6 +3,7 @@ from django.views import View
 from usuarios.formsMedico import FormularioOrdenMedica
 from habilis.auth0backend import getRole, getUserId
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 class FormularioOrdenView(View):
     template_name = 'medico2.html'
@@ -14,6 +15,7 @@ class FormularioOrdenView(View):
         form = FormularioOrdenMedica(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Orden creada con éxito!')  
             form = FormularioOrdenMedica()
         context = {"form":form}
         return render(request, self.template_name, context)

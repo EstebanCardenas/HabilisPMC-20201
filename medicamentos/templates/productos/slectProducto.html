@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load crispy_forms_tags %}
 {% block content %}
 
 <!--<div class="row">-->
@@ -55,7 +55,7 @@
 
     <form method="POST"> {% csrf_token %}
         <h3>Pedir Medicamento</h3>
-            {{ form.as_p }}
+            {{ form|crispy }}
         <input class="btn btn-outline-secondary" type="submit" value="Enviar"/>
     </form>
 

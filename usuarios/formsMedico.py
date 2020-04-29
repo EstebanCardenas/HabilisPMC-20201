@@ -9,16 +9,13 @@ from django.core.exceptions import ObjectDoesNotExist
 import datetime
 
 
-
-
-
 class FormularioOrdenMedica(forms.ModelForm):
 
-    userIdMedico = getPutoId
+    userIdMedico = getPutoId()
     try: 
         Medico.objects.get(user_id=userIdMedico)
     except ObjectDoesNotExist:
-        userIdMedico = "auth0|5ea761721cc1ac0c146c32e2"
+        userIdMedico = "auth0|5ea761721cc1ac0c146c32e2"   
     medicoAsociaco = Medico.objects.get(user_id=userIdMedico)
     
 
