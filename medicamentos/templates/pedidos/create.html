@@ -2,10 +2,22 @@
 {% load crispy_forms_tags %}
 {% block content %}
 
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <form method="POST" action="{% url 'crear_pedido' %}"> {% csrf_token %}
-        <h3>Registrar Pedido</h3>
-            {{ form|crispy }}
-        <a href="{% url 'pedir_medicamento' %}" class="button" style="color: lightskyblue">Siguiente</a>
+        <h1>Registrar Pedido</h1>
+        <br>
+            {{ form.as_p }}
+        <a href="{% url 'pedir_medicamento' %}" class="button" style="color: lightskyblue">SIGUIENTE</a>
     </form>
 
 {% endblock %}

@@ -18,3 +18,6 @@ def get_product(producto):
 
 def get_precio_medicamento(nombre):
     return Medicamento.objects.get(referencia=nombre).precio
+
+# def get_pedidos(id_paciente):
+#     pass

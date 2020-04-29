@@ -20,6 +20,9 @@ from .views import *
 
 urlpatterns = [
 
-    path('formulario/', FormularioOrdenView.as_view())
+    path('formulario/', FormularioOrdenView.as_view()),
+    path('ui/paciente', UIPaciente.as_view(), name="ui_paciente"),
+    path('citas/', VisualizacionCitas.as_view(), name='citas'),
+    path('ordenes/', VisualizacionOrdenes.as_view(), name='ordenes')
 
 ]

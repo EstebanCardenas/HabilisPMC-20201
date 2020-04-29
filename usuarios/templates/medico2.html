@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base2.html' %}
 
 {% load crispy_forms_tags %}
 
@@ -7,7 +7,7 @@
 {% include 'messages.html' %}
 
 <form method="POST" data-spy="scroll"> {% csrf_token %}
-
+    <br>
     <h3>Formulario orden médica</h3>
     <br>
     {{ form|crispy }}
