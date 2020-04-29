@@ -20,7 +20,7 @@ class FormularioOrdenMedica(forms.Form):
     m = Medico.objects.get(user_id=userIdMedico)
     
 
-    nombreMedico = forms.CharField(label="Nombre Médico", initial=m.nombre)
+    nombreMedico = forms.CharField(label="Nombre Médico", initial=m.nombre )
     especialidad = forms.CharField(label="Especialidad", initial=m.especialidad)
     edad = forms.CharField(label="Edad", initial=m.edad)
     registroMedico = forms.CharField(label="Número de registro médico", initial=m.regMedico)
