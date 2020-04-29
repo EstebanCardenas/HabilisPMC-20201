@@ -17,3 +17,8 @@ class FormularioOrdenView(View):
             form = FormularioOrdenMedica()
         context = {"form":form}
         return render(request, self.template_name, context)
+
+class UIPaciente(View):
+    template_name = 'ui_paciente.html'
+    def get(self, request):
+        return render(request, self.template_name, {})

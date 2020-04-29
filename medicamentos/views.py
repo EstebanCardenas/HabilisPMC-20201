@@ -4,7 +4,7 @@ from django.db.models import Q # new
 # Create your views here.
 from django.views import View
 from django.views.generic import ListView
-
+from .logic import *
 from eps.models import OrdenMedica
 from medicamentos.forms import *
 
@@ -61,3 +61,16 @@ class VerOrdenMedicaView(View):
             'meds':medicamentos,
         }
         return render(request, self.template_name, context)
+
+class ConsultarPedidosView(View):
+    template_name = 'orden_medica/consultar.html'
+    """
+    def get(self, request, **kwargs):
+        pedidos = get_pedidos(kwargs['id'])
+        context = {
+            'pedidos':pedidos
+        }
+        return render(request, self.template_name, context)
+    """
+    def get(self, request):
+        return render(request, self.template_name, {})
