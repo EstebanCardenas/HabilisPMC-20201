@@ -11,6 +11,7 @@ import datetime
 
 class FormularioOrdenMedica(forms.ModelForm):
 
+
     userIdMedico = getPutoId()
     try: 
         Medico.objects.get(user_id=userIdMedico)
